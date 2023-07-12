@@ -1,0 +1,32 @@
+id: lightdsah-detect
+
+info:
+  name: lightdash version detect
+  severity: info
+  description: |
+    lightdash has an api endpoint to read slack image but it can abused to read arbitray file
+  author: Esonhugh-self-maintained
+  metadata:
+    fofa: "lightdash"
+  tags: lightdash
+
+http:
+  - path:
+      - "{{ BaseURL }}/api/v1/health"
+
+    extractors:
+      - type: json
+        json:
+          - ".results.version"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+
+      - type: word
+        condition: and
+        words:
+          - '"status"'
+          - '"ok"'

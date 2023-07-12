@@ -1,0 +1,41 @@
+id: Ruoyi-default-password
+info:
+  name: Ruoyi default password admin/admin123
+  author: Esonhugh-self-maintained
+  severity: critical
+  description: |
+    Ruoyi default password admin admin123
+  tags: password,default,ruoyi
+
+stop-at-first-match: true
+requests:
+  - method: POST
+    path:
+      - '{{BaseURL}}/ruoyi/login'
+      - '{{BaseURL}}/login'
+      - '{{Host}}:9200/ruoyi/login'
+      - '{{Host}}:9200/login'
+    body: '{"username":"admin","password":"admin123"}'
+    headers:
+      Content-Type: application/json
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+          - 302
+      - type: word
+        part: body
+        condition: or
+        words: 
+          - '"code":200'
+          - '"token"'
+    extractors:
+      - type: json
+        part: body
+        json:
+          - ".data.access_token"
+          - ".token"
+          - ".access_token"
+
