@@ -9,7 +9,7 @@ info:
     - https://hackerone.com/reports/764731
   tags: prometheus,misconfig,grafana
 
-requests:
+http:
   - method: GET
     path:
       - "{{BaseURL}}/api/datasources/proxy/1/api/v1/query?query=114*514"

@@ -6,6 +6,8 @@ info:
   severity: critical
   description: |
     The authentication function of Nacos is can be bypass through default JWT secret.
+    SecertKey: SecretKey012345678901234567890123456789012345678901234567890123456789
+    Need base64 encode
   reference:
     - https://github.com/alibaba/nacos/issues/10060
     - https://avd.aliyun.com/detail?id=AVD-2023-1655789

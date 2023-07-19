@@ -8,13 +8,13 @@ info:
   tags: password,default,ruoyi
 
 stop-at-first-match: true
-requests:
+http:
   - method: POST
     path:
-      - '{{BaseURL}}/ruoyi/login'
-      - '{{BaseURL}}/login'
-      - '{{Host}}:9200/ruoyi/login'
-      - '{{Host}}:9200/login'
+      - "{{BaseURL}}/ruoyi/login"
+      - "{{BaseURL}}/login"
+      - "{{Host}}:9200/ruoyi/login"
+      - "{{Host}}:9200/login"
     body: '{"username":"admin","password":"admin123"}'
     headers:
       Content-Type: application/json
@@ -28,7 +28,7 @@ requests:
       - type: word
         part: body
         condition: or
-        words: 
+        words:
           - '"code":200'
           - '"token"'
     extractors:
@@ -38,4 +38,3 @@ requests:
           - ".data.access_token"
           - ".token"
           - ".access_token"
-
