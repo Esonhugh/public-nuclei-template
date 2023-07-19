@@ -12,6 +12,30 @@ info:
 
 http:
   - path:
+      - "{{BaseURL}}"
+      - "{{BaseURL}}/"
+      - "{{BaseURL}}{{index_js}}"
+      - "{{BaseURL}}/{{index_js}}"
+    extractors:
+      - type: xpath
+        name: index_js
+        internal: true
+        attribute: src
+        xpath:
+          - "/html/head/script[1]"
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        condition: and
+        words:
+          - "lightdash"
+          - "https://docs.lightdash.com/"
+
+  - path:
+      - "{{ BaseURL }}api/v1/health"
       - "{{ BaseURL }}/api/v1/health"
 
     extractors:
