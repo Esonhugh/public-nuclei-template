@@ -1,4 +1,4 @@
-id: CVE-2023-42442
+id: CVE-2023-42442-esonhugh
 info:
   name: JumpServer v3.0.0 - v3.6.3 terminal session api broken access control
   author: Esonhugh
