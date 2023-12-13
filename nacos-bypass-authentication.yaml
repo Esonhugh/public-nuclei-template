@@ -83,3 +83,4 @@ requests:
         json:
           - ".message"
         name: Create user nacos_admin/{{randstr_2}}
+# digest: 4b0a00483046022100e294037f58b961034ab107011ed0d3bed3c2b2d58d30ce6983c17d57e95021f0022100a6e63bf2da2c023f04032f10b8db579b6a55a69179e4206702baa4d9abfa3c14:569246fd1e83ae0648e1a21ffb4fe811

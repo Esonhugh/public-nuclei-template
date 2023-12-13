@@ -38,3 +38,4 @@ http:
         name: termianl-data
         dsl:
           - "body"
+# digest: 490a004630440220602a5c8db758a92a8387391edf72d87e672970b78344ed1ca10a576a4d0db8e00220356fa18b79abd61da37107835a4fa9dbd5c45f3f52ead4a2ec03fe204808c587:569246fd1e83ae0648e1a21ffb4fe811

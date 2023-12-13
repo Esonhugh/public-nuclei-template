@@ -35,3 +35,4 @@ http:
         words:
           - "config.server.username"
           - "config.server.password"
+# digest: 490a00463044022044c9eb3423192c43cd4c8f9a15cbbd66af9bb9f2a1da1cdfa158ea1e36858d0102204d978d34326e230887df07a7d973b9317b11336d9c0ffd7ff1ea84b4e45a5c43:569246fd1e83ae0648e1a21ffb4fe811

@@ -38,3 +38,4 @@ http:
           - ".data.access_token"
           - ".token"
           - ".access_token"
+# digest: 4a0a0047304502200976fe6e99cbc765fae72e99670ca80d9792493ccedf9bb04c7ffdd254e6c308022100af74b38e0dbe54cada9a7824e00b39501e35c317a1073ffe4ecf53a16114d8bf:569246fd1e83ae0648e1a21ffb4fe811
