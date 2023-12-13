@@ -1,0 +1,1 @@
+nuclei -t . --sign
