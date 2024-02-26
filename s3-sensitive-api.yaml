@@ -4,8 +4,10 @@ info:
   name: s3 buckect sensitive policy acl misconfiguration
   severity: medium
   description: |
-    This is a S3 bucket sensitive policy acl misconfiguration vulnerability. 
-    you maybe can have a full control of the bucket.
+    This is a S3 bucket sensitive policy/acl misconfiguration vulnerability. 
+    It always happens when your bucket acl is set to public-read or private, but policy is set to allow everyone to access the bucket. ( like Princple: "*" )
+    Even you put "Action": "s3:*" and "Effect": "Allow" in the policy, that can let you have full control of the bucket.
+
   reference:
     - "https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAcl.html"
     - "https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAcl.html"
@@ -90,3 +92,4 @@ http:
           # - "arn:aws:iam::([^:]+):(user|group|role|instance-profile|federated-user|assumed-role|mfa|u2f|server-certificate|saml-provider|oidc-provider)/([^/]+)"
           - "acs:ram::([^:]+):(root|([^/]+)/[^/]+)"
           - "qcs::cam::([^:]+):(root|([^/]+)/[^/]+)"
+# digest: 4a0a0047304502203ce1a620234421550dbd7ee50468ecf28d6a14719dd198de377d56b2bd75a9550221009e22dfa3bcad4e3c8b0e63fe7bcd598091ab152c99d607786d40d61d788c8c81:569246fd1e83ae0648e1a21ffb4fe811
